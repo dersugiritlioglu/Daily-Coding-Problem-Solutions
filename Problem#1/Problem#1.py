@@ -15,16 +15,37 @@ Bonus: Can you do this in one pass?
 
 """
 
+#%%
+
+# Trivial solution
+
+def basic(mylist, k):
+	for i in range(len(mylist)):
+		for j in range(i,len(mylist)):
+			if mylist[i] + mylist[j] == k :
+				return True
+	return False
+
+#%%
+
+# In one pass
+	
 import numpy as np
 
 def myfunc(mylist, k):
-	all_less = True
-	all_greater = True
-	for i in range(len(mylist)-1):
-		if k<mylist[0] + mylist[i+1]:
-			all_greater = False
-		elif k>mylist[0] + mylist[i+1]:
-			all_less = False
-		else:
+	for i in range(len(mylist)):
+		temp_l = mylist.copy()
+		temp_l.remove(mylist[i])
+		# if we did not use remove function, function would return true for mylist[i] * 2
+		if k - mylist[i] in temp_l : 
 			return True
-		
+	return False
+
+#%%
+			
+l = [10, 15, 3, 7]
+k = 17
+
+print(myfunc(l,k))
+
+
