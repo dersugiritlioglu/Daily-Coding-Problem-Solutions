@@ -29,8 +29,6 @@ def basic(mylist, k):
 #%%
 
 # In one pass
-	
-import numpy as np
 
 def myfunc(mylist, k):
 	for i in range(len(mylist)):
